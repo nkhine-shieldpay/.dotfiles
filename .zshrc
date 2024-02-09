@@ -110,6 +110,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 [ -r ~/.zsh_env ] && source ~/.zsh_env
+[ -r ~/.zsh_private ] && source ~/.zsh_private
 [ -r ~/.zsh_aliases ] && source ~/.zsh_aliases
 [ -r ~/.zsh_secrets ] && source ~/.zsh_secrets
 
@@ -131,3 +132,10 @@ if [ ! -S "$SSH_AUTH_SOCK" ]; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        source "$BASE16_SHELL/profile_helper.sh"
+        
