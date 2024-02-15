@@ -17,15 +17,6 @@ function mongo() {
     docker exec -it mongo-www mongo $*
 }
 
-function login() {
-	local profile="$1"
-	local region="$2"
-	aws ecr get-login \
-		--no-include-email \
-		--region "$region" \
-		--profile "${profile}"
-}
-
 function pgadmin4() {
 	docker run --publish 5050:5050 --volume=pga4volume:/var/lib/pgadmin --env "PGADMIN_SETUP_EMAIL=nkhine@shieldpay.com" --env "PGADMIN_SETUP_PASSWORD=a" --name=pgadmin4 --hostname=pgadmin4 --network=pgnetwork --detach crunchydata/crunchy-pgadmin4:centos7-10.9-2.4.1
 }
@@ -130,3 +121,9 @@ validateYaml() {
 }
 
 alias accounts='go run $INFRA/scripts/profiles.go'
+
+function login() {
+    local profile="$1"
+    $INFRA/scripts/login.sh \
+        --profile "${profile}"
+}

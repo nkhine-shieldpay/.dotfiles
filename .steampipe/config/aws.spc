@@ -52,3 +52,23 @@ connection "aws" {
   # will use virtual hosted bucket addressing when possible (`http://BUCKET.s3.amazonaws.com/KEY`).
   #s3_force_path_style = false
 }
+connection "aws_master" {
+  plugin  = "aws"
+  profile = "master"
+  regions = ["eu-west-1", "eu-west-2"]
+}
+connection "aws_cicd" {
+  plugin  = "aws"
+  profile = "cicd"
+  regions = ["eu-west-1", "eu-west-2"]
+}
+connection "aws_logs" {
+  plugin  = "aws"
+  profile = "logs"
+  regions = ["eu-west-1", "eu-west-2"]
+}
+connection "aws_all" {
+  plugin      = "aws"
+  type        = "aggregator"
+  connections = ["aws_cicd", "aws_logs"]
+}
