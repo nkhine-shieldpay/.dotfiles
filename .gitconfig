@@ -2,6 +2,8 @@
 
 [includeIf "gitdir:~/go/src/github.com/Shieldpay/"]
     path = ~/.config/git/shieldpay/.gitconfig
+[includeIf "gitdir:~/.dotfiles/"]
+    path = ~/.config/git/shieldpay/.gitconfig
 [includeIf "gitdir:~/go/src/github.com/nkhine/"]
     path = ~/.config/git/nkhine/.gitconfig
 
