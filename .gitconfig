@@ -1,0 +1,29 @@
+# ~/.gitconfig
+
+[includeIf "gitdir:~/go/src/github.com/Shieldpay/"]
+    path = ~/.config/git/shieldpay/.gitconfig
+[includeIf "gitdir:~/go/src/github.com/nkhine/"]
+    path = ~/.config/git/nkhine/.gitconfig
+
+
+[core]
+  excludesfile = ~/.gitignore
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true # use n and N to move between diff sections
+  side-by-side = true
+
+  # delta detects terminal colors automatically; set one of these to disable auto-detections
+  # dark = true
+  # light = true
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
+
+# [user]
+#   name = Norman Khine
+#   email = nkhine@shieldpay.com

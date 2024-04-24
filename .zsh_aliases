@@ -127,3 +127,6 @@ function login() {
     $INFRA/scripts/login.sh \
         --profile "${profile}"
 }
+
+alias ls="eza --color=always --long --git --icons=always --no-user --no-permissions --no-time --no-filesize"
+alias cd="z"
